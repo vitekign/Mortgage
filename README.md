@@ -1,6 +1,10 @@
-Welcome to the Expert-System-with-Fuzzy-Logic wiki!
 
 # Mortgage Approval and Rate Generator Expert System 
+
+
+![flow_chart_minimized](https://cloud.githubusercontent.com/assets/3220686/21069051/26966886-be2b-11e6-9831-2fd2d8c9ecd3.png)
+
+
 
 ### Introduction and Background
 
