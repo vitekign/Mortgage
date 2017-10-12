@@ -116,25 +116,32 @@ cell-phone: (404) 518-4587                      email: robinsoncet@gmail.com
 
 After calculating DTI and LTV, the system uses fuzzy logic to calculate the OVERALL OUTLOOK points, which are applied to every eventual decision. I did it in order to simplify the job of my knowledge expert, instead of doing 81 cases at each sub-branch, he only needed to fill out 27 possibilities. Diagram 2.1, 2.2, and 2.3 show how I made a range of fuzzy inputs. After conversion, the fuzzy logic does its job and produces a crisp value based on diagram 2.4. After getting a crisp value of OVERALL OUTLOOK points, I run them again through the 'fuzzy set definition' for OUTLOOK. Doing this, I associate a crisp value with an appropriate parameter: NNNN | NNN | NN | N | A | P | PP | PPP | PPPP. I do this process in order to be able to use my crisp value later, in fuzzy logic, which decides the approval status and mortgage rate, in each sub-tree.
 
-##1.1 Process of calculating the OVERALL OUTLOOK points. 
+##1.1 Process of calculating the OVERALL OUTLOOK points.
+
 ![outlook_fuzzy](https://cloud.githubusercontent.com/assets/3220686/20918786/8d910df6-bb4d-11e6-86d7-7c7a93187567.png)
 
 ##2.1 Credit Score Fuzzy Set
+
 <img width="400" src="https://cloud.githubusercontent.com/assets/3220686/20918872/fffa7d14-bb4d-11e6-8093-ca11830d1880.jpg">
 
-##2.2 DTI [debt to income] Fuzzy Set 
+##2.2 DTI [debt to income] Fuzzy Set
+
 <img width="400" src="https://cloud.githubusercontent.com/assets/3220686/20918890/11a182a6-bb4e-11e6-85e1-6214a93e2ae0.png">
 
 ##2.3 LTV [loan to value] Fuzzy Set
+
 <img width="400" src="https://cloud.githubusercontent.com/assets/3220686/20918899/1d9527e8-bb4e-11e6-978f-df40ed887061.png">
 
 ##2.4 Overall Outlook [loan to value]
+
 <img width="800" src="https://cloud.githubusercontent.com/assets/3220686/20918926/4238a75a-bb4e-11e6-9d6c-0b149f9dbb88.png">
 
 ##2.5 How long ago the last bankruptcy happened Fuzzy Set.
+
 <img width="400" src="https://cloud.githubusercontent.com/assets/3220686/20918934/4d4a13e0-bb4e-11e6-97ce-1c19d52c21d1.png">
 
-##1.2 The process of decision-making for bankruptcy chapter 7/13 sub-tree. 
+##1.2 The process of decision-making for bankruptcy chapter 7/13 sub-tree.
+
 <img width="400" src="https://cloud.githubusercontent.com/assets/3220686/20918955/5ea76908-bb4e-11e6-9359-2c8c6f31e699.png">
 
 After additional case-specific questions have been asked, the system calculates the eventual mortgage rate and decides whether to approve the applicant's application or not. To utilize fuzzy logic, the system uses OVERALL OUTLOOK points and from one to n instances of additional fuzzy sets, from a corresponding sub-tree. For example, to make a final decision in a chapter-7 case,  the system uses OVERALL OUTLOOK points (2.4) and the fuzzy set which summarizes how long ago the last bankruptcy happened (2.5). 
@@ -142,18 +149,22 @@ The process for calculating the bankruptcy chapter-13 case is very similar. It i
 OVERALL OUTLOOKS points (2.4) and a corresponding value for the time when the last bankruptcy occurred (2.5). 
 
 
-##1.3 The process of decision making for 30-60-day-late payments with family-related extenuating circumstances. 
+##1.3 The process of decision making for 30-60-day-late payments with family-related extenuating circumstances.
+
 <img width="400" src="https://cloud.githubusercontent.com/assets/3220686/20918959/64d1ef74-bb4e-11e6-81ba-004c6cd40654.png">
 
 In this case, fuzzy logic is employed to calculate the final decision and mortgage rate for the case when the applicant has made a 30-60-day late credit card payments, taking into consideration family-related extenuating circumstances. The frequency fuzzy set stands for the number of late payments acquired by the applicant (2.7). To make the final decision the fuzzy logic is utilized using OVERALL OUTLOOK points (2.4) and frequency fuzzy set (2.7).
 
-##2.7 The number of 30-60 day late credit card payments Fuzzy Set. 
+##2.7 The number of 30-60 day late credit card payments Fuzzy Set.
+
 <img width="400" src="https://cloud.githubusercontent.com/assets/3220686/20918973/74d5b4b4-bb4e-11e6-9cf5-39de0594434b.png">
 
-##2.8 Rate Fuzzy Set. 
+##2.8 Rate Fuzzy Set.
+
 <img width="600" src="https://cloud.githubusercontent.com/assets/3220686/20918987/7f409022-bb4e-11e6-98cc-4a9878dfdada.png">
 
-##2.9 Approval Fuzzy Set. 
+##2.9 Approval Fuzzy Set.
+
 <img width="400" src="https://cloud.githubusercontent.com/assets/3220686/20918999/8bf672dc-bb4e-11e6-9806-f71a4065e203.png">
 
 To make the final decision the system runs all of the corresponding values through the Rate Fuzzy Set (2.8) and Approval Fuzzy Set (2.9). After this step, the system saves two crisp values for the rate and for the approval status. For the rate, the system does not need to convert the value into another type. However, for the approval status, the system converts the crisp output into one of three cases: Approved, Human Decision or Denial, as shown in Approval Fuzzy Set (2.9). 
@@ -167,13 +178,17 @@ If the application is denied, then the system informs the applicant without show
 
 #Sample scenarios.
 ##Scenario 3.1
+
 <img width="600" alt="scenario_1" src="https://cloud.githubusercontent.com/assets/3220686/20919016/9ea07040-bb4e-11e6-8e38-fff83172e97c.png">
 
 ##Scenario 3.2
+
 <img width="600" alt="scenario_2" src="https://cloud.githubusercontent.com/assets/3220686/20919030/aae316be-bb4e-11e6-8111-95ab79414e66.png">
 
-##Scenario 3.3
+##Scenario 3.3	
+
 <img width="600" alt="scenario_3" src="https://cloud.githubusercontent.com/assets/3220686/20919036/b19bdf36-bb4e-11e6-91b6-b2d66a3efca6.png">
 
 ##Scenario 3.4
+
 <img width="600" alt="scenario_4" src="https://cloud.githubusercontent.com/assets/3220686/20919043/b8c26c62-bb4e-11e6-9962-e240c1525b45.png">
