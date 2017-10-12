@@ -23,7 +23,7 @@ The second step was to take all acquired knowledge concerning the mortgage indus
 
 Without thorough, complete and precise information it is impossible to build an expert system. So, the first step was to contact my expert engineer, trying to explain what I am about to build. The engineer, for this project, was Seth Robinson, at the time working as a loan officer. During our first talk, he explained to me the life cycle of mortgage decision making. The first step is to collect information and pass it to a mortgage underwriter. If the mortgage underwriter gives a positive YES/NO, then no additional human help is needed to finalize the deal. However, in some cases, the mortgage underwriter cannot decide whether to approve or not. In such cases, the applications are passed to loan officers for the final consideration and decision. 
 
-After being able to see the big picture, we moved towards constructing a flowchart of the whole process. We quickly figured out that the most significant data which can profoundly affect the decision tree path is an applicant's credit score. The lowest range of score is between 450 and up to 640. If the applicant falls in this range then it indicates one of the following cases:
+After being able to see the big picture, we moved towards constructing a flowchart of the whole process. We quickly figured out that the most significant data which can profoundly affect the decision tree path is an applicant's credit score. The lowest range of score is between 450 and 640. If the applicant falls in this range then it indicates one of the following cases:
 
 1. The applicant has a history of bankruptcies. 
 
@@ -42,7 +42,7 @@ After being able to see the big picture, we moved towards constructing a flowcha
 	If it happened more than 4 times, then it is an automatic denial. 
 	If the applicant has been late 4 or fewer times, then **fuzzy logic** needs to be 
 	employed. Also, extenuating circumstances such as family issues 
-	must be considered towards a more positive overall outlook.  
+	must be considered while giving a more positive overall outlook.  
 
    2.  60-to-90-day late payments 
         This case is considered to be worse than the previous one. 
@@ -68,8 +68,8 @@ After being able to see the big picture, we moved towards constructing a flowcha
 		existent collection account and is taking all necessary steps to resolve the issue, then
                 it does not introduce negative overall outlook. In such 
 		cases, fuzzy logic needs to be incorporated and the final decision to be 
-		considered based on all of the information provided. 
-		However, if the application does not know about collection account's existence and is not 
+		calculated based on all of the information provided. 
+		However, if the applicant does not know about collection account's existence and is not 
 		about to take any steps to resolve the issue, then it is an automatic denial. 
 
 	2. Non-Medical, so-called "Irresponsible/Immature" collection accounts. 
@@ -96,7 +96,7 @@ cell-phone: (404) 518-4587                      email: robinsoncet@gmail.com
 
 ## Simplifications and Constrains
 
-1. Considering the size of this type of expert system in production, I had no choice but to constrain my application to cover only one credit score range. However, I chose to implement the most difficult range which goes from 450 up to 640 score points. The applicants who fall in this range, usually have to meet a number of extra requirements, which have to be taken into consideration and thoroughly analyzed. 
+1. Considering the size of this type of expert system in production, I had no choice but to constrain my application to cover only one credit score range. However, I chose to implement the most difficult range which goes from 450 to 640 score points. The applicants who fall in this range, usually have to meet a number of extra requirements, which have to be taken into consideration and thoroughly analyzed. 
 2. Due to the time constraints, I implemented only 3 sub-trees which lead to the mortgage approval decision and rate assignment. This includes: chapter-7 bankruptcy, chapter-13 bankruptcy and 30-60-day late payments, with extenuating circumstances like 'family issues'. It might not seem a lot; however, my knowledge expert spent around 3 hours just on filling up the FAM rules for this small part of fully implemented mortgage expert system. 
 3. The system does not make a decision whether to assign a 15-year mortgage or instead go with a 30-year offer. 
 4. Considering that Credit Rating, LTV and DTI are used in each possible scenario, I decided to employ fuzzy logic and convert these three crisp input values into one overall score. This way I could decrease the number of FAM cases in each sub-tree by order of 3. For example, in chapter-7 case, instead of having an 81-case FAM, I downsized it to 27 cases. However, I am not sure if by doing so I did not lose some precision and sensitivity. 
@@ -106,7 +106,7 @@ cell-phone: (404) 518-4587                      email: robinsoncet@gmail.com
 ## Expert System Design
 
 
-1. To better understand the organization of the system, please refer to the Flow Chart. During multiple phone conversations with my expert, I was making numerous notes and small flow-charts. After the most important information was collected, I turned everything into one flowchart. It turns out that a nicely done flow chart can serve as one of the best tools for this type of projects. After finishing constructing the flowchart, I moved to coding and began converting everything to clips. 
+1. To better understand the organization of the system, please refer to the Flow Chart. During multiple phone conversations with my expert, I was making numerous notes and small flow-charts. After the most important information was collected, I turned everything into one flowchart. It turns out that a nicely done flow chart can serve as one of the best tools for this type of projects. After finishing constructing the flowchart, I moved to coding and began converting everything into clips. 
 
 2. The first task of the system is to collect the most necessary information concerning the applicant's case. This information includes: the applicant's credit score, recurring monthly debt, gross monthly income, a market value of the house and the amount of the down payment. As soon as this information is provided, the system calculates the DTI and LTV ratios.
 
@@ -114,7 +114,7 @@ cell-phone: (404) 518-4587                      email: robinsoncet@gmail.com
 
           LTV ratio = ([market value of the house] - [downpayment]) / [market value of the house] 
 
-After calculating DTI and LTV, the system uses fuzzy logic to calculate the OVERALL OUTLOOK points, which are applied to every eventual decision. I did it in order to simplify the job of my knowledge expert, instead of doing 81 cases at each sub-branch, he only needed to fill out 27 possibilities. Diagram 2.1, 2.2, and 2.3 show how I made a range of fuzzy inputs. After conversion, the fuzzy logic does its job and produces a crisp value based on diagram 2.4. After getting a crisp value of OVERALL OUTLOOK points, I run them again through the 'fuzzy set definition' for OUTLOOK. Doing this, I associate a crisp value with an appropriate parameter: NNNN | NNN | NN | N | A | P | PP | PPP | PPPP. I do this process in order to be able to use my crisp value later, in fuzzy logic, which decides the approval status and mortgage rate, in each sub-tree.
+After calculating DTI and LTV, the system uses fuzzy logic to calculate the OVERALL OUTLOOK points, which are applied to every subsequent decision. I did it in order to simplify the job of my knowledge expert, instead of doing 81 cases at each sub-branch, he only needed to fill out 27 possibilities. Diagrams 2.1, 2.2, and 2.3 show how I made a range of fuzzy inputs. After conversion, the fuzzy logic does its job and produces a crisp value according to diagram 2.4. After getting a crisp value of OVERALL OUTLOOK points, I run them again through the 'fuzzy set definition' for OUTLOOK. Doing this, I associated a crisp value with an appropriate parameter: NNNN | NNN | NN | N | A | P | PP | PPP | PPPP. I did this process in order to be able to use the crisp value later, in fuzzy logic, which decides the approval status and mortgage rate, in each sub-tree.
 
 ## 1.1 Process of calculating the OVERALL OUTLOOK points.
 
@@ -167,7 +167,7 @@ In this case, fuzzy logic is employed to calculate the final decision and mortga
 
 <img width="400" src="https://cloud.githubusercontent.com/assets/3220686/20918999/8bf672dc-bb4e-11e6-9806-f71a4065e203.png">
 
-To make the final decision the system runs all of the corresponding values through the Rate Fuzzy Set (2.8) and Approval Fuzzy Set (2.9). After this step, the system saves two crisp values for the rate and for the approval status. For the rate, the system does not need to convert the value into another type. However, for the approval status, the system converts the crisp output into one of three cases: Approved, Human Decision or Denial, as shown in Approval Fuzzy Set (2.9). 
+To make the final decision, the system runs all of the corresponding values through the Rate Fuzzy Set (2.8) and Approval Fuzzy Set (2.9). After this step, the system saves two crisp values for the rate and for the approval status. For the rate, the system does not need to convert the value into another type. However, for the approval status, the system converts the crisp output into one of three cases: Approved, Human Decision or Denial, as shown in Approval Fuzzy Set (2.9). 
 
 If the application is approved, the system congratulates the applicant and informs about a corresponding mortgage rate. 
 
