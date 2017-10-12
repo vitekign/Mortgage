@@ -106,7 +106,7 @@ cell-phone: (404) 518-4587                      email: robinsoncet@gmail.com
 ## Expert System Design
 
 
-1. To better understand the organization of the system, please refer to the Flow Chart. During multiple phone conversations with my expert, I was making numerous notes and small flow-charts. After the most important information was collected, I turned everything into one flowchart. It turns out that a nicely done flow chart can serve as one of the best tools for this type of projects. After finishing constructing the flowchart, I moved to coding and began converting everything into clips. 
+1. To better understand the organization of the system, please refer to the Flow Chart. During multiple phone conversations with my expert, I was making numerous notes and small flow-charts. After the most important information was collected, I turned everything into one flowchart. It turns out that a nicely done flow chart can serve as one of the best tools for these types of projects. After finishing constructing the flowchart, I moved to coding and began converting everything into clips. 
 
 2. The first task of the system is to collect the most necessary information concerning the applicant's case. This information includes: the applicant's credit score, recurring monthly debt, gross monthly income, a market value of the house and the amount of the down payment. As soon as this information is provided, the system calculates the DTI and LTV ratios.
 
